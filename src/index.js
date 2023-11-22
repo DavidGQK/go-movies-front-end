@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import EditMovie from './components/EditMovie';
 import ErrorPage from './components/ErrorPage';
 import Genres from './components/Genres';
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
-        errorElement: <ErrorPage/>,
+        errorElement: <ErrorPage />,
         children: [
             {index: true, element: <Home /> },
             {
@@ -33,6 +33,10 @@ const router = createBrowserRouter([
             },
             {
                 path: "/admin/movie/0",
+                element: <EditMovie />,
+            },
+            {
+                path: "/admin/movie/:id",
                 element: <EditMovie />,
             },
             {
@@ -53,7 +57,7 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router}/>
-  </React.StrictMode>
+    <React.StrictMode>
+        <RouterProvider router={router} />
+    </React.StrictMode>
 );
